@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <%- include('navbar', {links:links}) %> <% if (messages.length === 0) { %>
+    <h3>No messages yet!</h3>
+    <% } else { %>
+    <ul>
+      <% for (let i = 0; i < messages.length; i++) { %>
+      <li>
+        <p>From: <%= messages[i].user %></p>
+        <h4><%= messages[i].text %></h4>
+        <p>(<%= messages[i].added.toString().slice(0, 25) %>)</p>
+        <button type="button">
+          <a href="/messages/<%= messages[i].id %>">Open</a>
+        </button>
+      </li>
+      <% } %>
+    </ul>
+    <% } %>
+  </body>
+</html>
